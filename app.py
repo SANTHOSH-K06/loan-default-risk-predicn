@@ -194,15 +194,12 @@ with st.sidebar:
     
     st.divider()
     
-    st.markdown("<div class='sec-label'>SYSTEM STATUS</div>", unsafe_allow_html=True)
     df_raw = st.session_state.engine.load_data()
     if df_raw is not None:
         X_scaled, y, _ = st.session_state.engine.preprocess(df_raw)
         model, acc, auc = st.session_state.engine.optimize_and_train(X_scaled, y, 
                                                                    algorithm='LR' if algo_choice == "LOGISTIC REGRESSION" else 'SVM', 
                                                                    C=C_param)
-        st.markdown("<p style='color:#00F0FF; font-weight:700;'>• KERNEL ONLINE</p>", unsafe_allow_html=True)
-        st.markdown("<p style='color:#00F0FF; font-weight:700;'>• DATASET ACTIVE</p>", unsafe_allow_html=True)
     else:
         st.error("CORE DATA MISSING")
         st.stop()
