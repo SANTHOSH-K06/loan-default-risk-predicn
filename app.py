@@ -8,7 +8,7 @@ from streamlit_lottie import st_lottie
 import requests
 import time
 
-st.set_page_config(page_title="Loan Risk Dashboard", page_icon="🧪", layout="wide")
+st.set_page_config(page_title="LOAN RISK CLASSIFIER", page_icon="🧪", layout="wide")
 
 def load_lottieurl(url):
     r = requests.get(url)
@@ -205,7 +205,7 @@ with st.sidebar:
         st.stop()
 
 # Header Section
-st.markdown("<h1 class='hero-title'>NEURAL RISK CLASSIFIER</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='hero-title'>LOAN RISK CLASSIFIER</h1>", unsafe_allow_html=True)
 st.markdown("<p class='hero-subtitle'>Advanced Financial Security Dashboard v2.0</p>", unsafe_allow_html=True)
 
 # Top Metrics Grid
@@ -233,22 +233,22 @@ with m3:
     """, unsafe_allow_html=True)
 
 # Assessment Section
-st.markdown("<div class='glass-card'><div class='sec-label'>APPLICANT QUANTUM DATA</div>", unsafe_allow_html=True)
+st.markdown("<div class='glass-card'><div class='sec-label'>APPLICANT LOAN DATA</div>", unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 
 with col1:
-    gender = st.selectbox("BIOLOGICAL GENDER", ["Male", "Female"])
+    gender = st.selectbox("GENDER", ["Male", "Female"])
     married = st.selectbox("MARITAL STATUS", ["Yes", "No"])
-    dependents = st.selectbox("DEPENDENT ENTITIES", ["0", "1", "2", "3+"])
+    dependents = st.selectbox("DEPENDENTS", ["0", "1", "2", "3+"])
     education = st.selectbox("EDUCATION LEVEL", ["Graduate", "Not Graduate"])
-    self_emp = st.selectbox("CORE EMPLOYMENT", ["Yes", "No"])
+    self_emp = st.selectbox("SELF EMPLOYED", ["Yes", "No"])
 
 with col2:
-    income = st.number_input("CORE MONTHLY INCOME ($)", min_value=0, value=5000)
-    co_income = st.number_input("SECONDARY INCOME ($)", min_value=0, value=0)
-    loan_amt = st.number_input("LOAN QUANTUM (K)", min_value=0, value=150)
+    income = st.number_input("APPLICANT INCOME ($)", min_value=0, value=5000)
+    co_income = st.number_input("CO-APPLICANT INCOME ($)", min_value=0, value=0)
+    loan_amt = st.number_input("LOAN AMOUNT (K)", min_value=0, value=150)
     term = st.selectbox("REPAYMENT CYCLE (M)", [360, 180, 120, 60])
-    credit_hist = st.selectbox("CREDIT SCORE INTEGRITY", ["1.0", "0.0"])
+    credit_hist = st.selectbox("CREDIT HISTORY", ["1.0", "0.0"])
 
 if st.button("🚀 INITIATE RISK ANALYSIS"):
     input_data = {
@@ -262,11 +262,11 @@ if st.button("🚀 INITIATE RISK ANALYSIS"):
     processing_placeholder = st.empty()
     with processing_placeholder.container():
         st.markdown("<div class='glass-card' style='text-align:center;'>", unsafe_allow_html=True)
-        st.markdown("<div class='sec-label'>QUANTUM PROBABILITY FLIP</div>", unsafe_allow_html=True)
+        st.markdown("<div class='sec-label'>LOAN RISK ANALYSIS</div>", unsafe_allow_html=True)
         if lottie_coin:
             st_lottie(lottie_coin, height=300, key="processing_coin")
         else:
-            st.write("🪙 Flipping Qubits...")
+            st.write("🪙 Analyzing Risk Factors...")
         st.markdown("</div>", unsafe_allow_html=True)
         time.sleep(2.5) # The "Throwing" effect duration
     
@@ -303,7 +303,7 @@ if st.button("🚀 INITIATE RISK ANALYSIS"):
         st.markdown(f"""
         <div class='result-box {res_cls}'>
             <div style='color:{accent_color}; font-size:2rem; font-weight:900;'>{res_lbl}</div>
-            <div style='font-size:1.1rem; opacity:0.8; margin-top:5px;'>NEURAL CONFIDENCE MODULE: {conf:.1f}%</div>
+            <div style='font-size:1.1rem; opacity:0.8; margin-top:5px;'>LOAN CONFIDENCE MODULE: {conf:.1f}%</div>
             <div class='conf-bar-outer'><div class='{bar_cls}' style='width:{conf}%'></div></div>
         </div>
         """, unsafe_allow_html=True)
